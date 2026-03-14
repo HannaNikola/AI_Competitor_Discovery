@@ -4,8 +4,12 @@ const Report = () => {
       <div className="w-full border border-devideBorder rounded-xl p-6 mb-7 ">
         <h3>Company Overview</h3>
         <ul>
-            <li className="font-semibold text-mainTitle list-disc list-inside">Product Category:</li>
-            <li className="font-semibold text-mainTitle list-disc list-inside">Target Users:</li>
+          <li className="font-semibold text-mainTitle list-disc list-inside">
+            Product Category:
+          </li>
+          <li className="font-semibold text-mainTitle list-disc list-inside">
+            Target Users:
+          </li>
         </ul>
       </div>
       <div className="flex">
@@ -34,10 +38,11 @@ const Report = () => {
             aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit.
           </p>
-          <div className="flex mt-auto "><button className="flex justify-center  w-66.25 px-5 py-2 rounded-lg  font-semibold text-textButton bg-button">
-            Download report
-          </button></div>
-          
+          <div className="flex mt-auto ">
+            <button className="flex justify-center  w-66.25 px-5 py-2 rounded-lg  font-semibold text-textButton bg-button">
+              Download report
+            </button>
+          </div>
         </div>
       </div>
     </div>

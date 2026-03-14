@@ -1,5 +1,5 @@
-import SearchInput from "./compoents/SearchInput";
-import Report from "./compoents/Report";
+import SearchInput from "../compoents/SearchInput";
+import Report from "../compoents/Report";
 
 export default function Home() {
   return (

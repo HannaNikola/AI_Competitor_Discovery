@@ -1,22 +1,36 @@
 import { NextResponse } from "next/server";
-import { scrapeWebsite } from "@/src/lib/scraper";
-
-// первый блок AI pipeline:
+import { createAgentWorkflow } from "@/src/lib/agentWorkflow";
+import { ResultSchema } from "@/src/lib/schemas";
 
 export async function POST(req: Request) {
   const { url } = await req.json();
 
   try {
-    const websiteText = await scrapeWebsite(url);
+    const workflow = createAgentWorkflow();
 
+    const result = await workflow.invoke({
+      url,
+    });
+    const parsed = ResultSchema.safeParse(result);
+
+    if (!parsed.success) {
+      console.error(parsed.error);
+      return NextResponse.json({
+        success: false,
+        error: "Invalid pipeline response",
+      });
+    }
     return NextResponse.json({
       success: true,
-      text: websiteText,
+      ...parsed.data,
     });
-  } catch (error) {
+  } catch (error: any) {
+    console.error("PIPELINE ERROR:", error);
+
     return NextResponse.json({
       success: false,
-      error: "Failed to scrape website",
+      error: error?.message || "Pipeline failed",
+      stack: error?.stack,
     });
   }
 }

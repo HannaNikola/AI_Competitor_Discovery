@@ -1,5 +1,6 @@
 // import { chromium } from "playwright";
-import { getBrowser } from "./browser";
+
+
 
 // export async function scrapeWebsite(url: string) {
 //   const browser = await chromium.launch();
@@ -68,14 +69,21 @@ import { getBrowser } from "./browser";
 
 
 
+
+
+import { chromium, Route } from "playwright";
+
 export async function scrapeWebsite(url: string) {
-  const browser = await getBrowser();
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
 
   try {
     const page = await browser.newPage();
 
-   
-    await page.route("**/*", (route) => {
+    // ускоряем загрузку
+    await page.route("**/*", (route: Route) => {
       const type = route.request().resourceType();
       if (["image", "stylesheet", "font"].includes(type)) {
         route.abort();

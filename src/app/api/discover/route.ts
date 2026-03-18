@@ -42,12 +42,12 @@ export async function POST(req: NextRequest) {
   const { url } = await req.json();
 
   try {
-    // workflow — чисто серверный
+   
     const workflow = createAgentWorkflow();
 
     const result = await workflow.invoke({ url });
 
-    // валидация схемой
+    
     const parsed = ResultSchema.safeParse(result);
 
     if (!parsed.success) {

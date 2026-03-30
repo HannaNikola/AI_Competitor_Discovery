@@ -15,27 +15,108 @@
   --color-devideBorder: #e5e7eb;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* iOS text scaling fix */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
-  background: var(--background);
-  color: var(--textResult);
+  background: var(--color-background);
+  color: var(--color-textResult);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
+
   margin: 0;
-  padding: 20px;
-  size: 16px;
+  padding: 16px;
+
+  font-size: 14px;
   line-height: 1.6;
+
+  /*  для iOS */
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Формы (фикс iOS + наследование шрифта) */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*  убирает zoom на input в iOS */
+input,
+textarea {
+  font-size: 16px;
+}
+
+/*  фикс кнопок в Safari */
+button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Ссылки */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* === SAFE AREA SUPPORT (iPhone notch) === */
+.safe-area {
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
 }
 
 h3 {
-  @apply text-xl font-semibold;
+  @apply text-[16px] font-semibold;
   color: #374151;
   margin-bottom: 8px;
 }
 
-.promptText{
-  size: 16px;
+.promptText {
+  font-size: 14px;
   line-height: 1.6;
-  color: var(--textResult);
+  color: var(--color-textResult);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
+}
+@media (min-width: 640px) {
+  body {
+    padding: 24px;
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  .promptText {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding: 40px;
+  }
+  h3 {
+    font-size: 18px;
+  }
 }

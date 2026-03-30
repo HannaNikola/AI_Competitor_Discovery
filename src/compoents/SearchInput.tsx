@@ -41,7 +41,7 @@ const SearchInput = () => {
   };
 
   return (
-    <div className="flex w-full border-b border-devideBorder justify-center pb-7">
+    <div className="flex w-full border-b border-devideBorder justify-center pb-5 sm:pb-7">
       <input
         type="text"
         value={urlLink}
@@ -56,12 +56,8 @@ const SearchInput = () => {
         disabled={isLoading}
         className={`
     flex justify-center items-center w-60 h-12 px-5 py-2 rounded-lg font-semibold 
-    text-textButton bg-button ml-7 transition-all duration-150
-    
-    /* Эффект нажатия */
+    text-textButton text-[14px] sm:text-[16px] bg-button ml-7 transition-all duration-150
     active:scale-95 
-    
-    /* Стили для заблокированной кнопки */
     disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
   `}
       >

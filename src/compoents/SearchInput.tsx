@@ -6,16 +6,23 @@ import axios from "axios";
 import { useState } from "react";
 import { RootState } from "../store";
 
+// link for render
+// export const api = axios.create({
+//   baseURL: "https://ai-competitor-discovery-backend.onrender.com",
+// });
+
+
 export const api = axios.create({
-  baseURL: "https://ai-competitor-discovery-backend.onrender.com",
+  baseURL: "https://p01--aicompetitordiscoverybackend--c5zwc6v5bd5l.code.run",
 });
 
 const SearchInput = () => {
   const dispatch = useDispatch();
   const [urlLink, setUrlLink] = useState("");
   const isLoading = useSelector((state: RootState) => state.result.loading);
-
+console.log(urlLink)
   const test = async () => {
+    
     try {
       dispatch(setLoading());
       const res = await api.post("/api/pipeline", {

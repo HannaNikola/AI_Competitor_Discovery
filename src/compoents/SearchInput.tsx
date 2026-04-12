@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setError, setLoading, setResult } from "../store/resultSlice";
+import { clearResult, setError, setLoading, setResult } from "../store/resultSlice";
 import axios from "axios";
 import { useState } from "react";
 import { RootState } from "../store";
@@ -24,6 +24,7 @@ console.log(urlLink)
   const test = async () => {
     
     try {
+      dispatch(clearResult())
       dispatch(setLoading());
       const res = await api.post("/api/pipeline", {
         url: urlLink,

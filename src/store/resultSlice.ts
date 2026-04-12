@@ -54,3 +54,5 @@ const resultSlice = createSlice({
 
 export const { setResult, clearResult, setError, setLoading } = resultSlice.actions;
 export default resultSlice.reducer;
+
+

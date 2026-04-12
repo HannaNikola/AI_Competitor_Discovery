@@ -7,29 +7,28 @@ type Competitor = {
   key_value_proposition: string;
   business_model: string;
 };
+
 const Report = () => {
   const { analysis, competitors, insight, loading, error } = useSelector(
     (state: any) => state.result,
   );
-
   return (
     <div className=" w-full mt-7  sm:mt-10">
       <div className="w-full border border-devideBorder rounded-xl p-4 sm:p-6 mb-5 sm:mb-7 ">
         <h3>Company Overview</h3>
 
         <p className="font-semibold text-mainTitle list-disc list-inside mb-2 ">
-          Product Category: <span className="promptText">{analysis?.product_category}</span>
+          Product Category:{" "}
+          <span className="promptText">{analysis?.product_category}</span>
         </p>
         <p className="font-semibold secondTitle list-disc list-inside mb-2 ">
-          Summery: <span className=" promptText">{analysis?.short_summary}</span>
+          Summery:{" "}
+          <span className=" promptText">{analysis?.short_summary}</span>
         </p>
         <p className="font-semibold text-mainTitle">Target Users:</p>
         <ul>
           {analysis?.target_users?.map((user: string, index: number) => (
-            <li
-              key={index}
-              className="promptText  list-disc list-inside"
-            >
+            <li key={index} className="promptText  list-disc list-inside">
               {user}
             </li>
           ))}
@@ -43,7 +42,8 @@ const Report = () => {
               {competitors?.competitors?.map(
                 (item: Competitor, index: number) => (
                   <li key={index} className="mb-2 text-blue-400">
-                    {item.name} — <span className=" promptText">{item.product_category}</span>
+                    {item.name} —{" "}
+                    <span className=" promptText">{item.product_category}</span>
                   </li>
                 ),
               )}

@@ -1,7 +1,12 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { clearResult, setError, setLoading, setResult } from "../store/resultSlice";
+import {
+  clearResult,
+  setError,
+  setLoading,
+  setResult,
+} from "../store/resultSlice";
 import axios from "axios";
 import { useState } from "react";
 import { RootState } from "../store";
@@ -11,7 +16,6 @@ import { RootState } from "../store";
 //   baseURL: "https://ai-competitor-discovery-backend.onrender.com",
 // });
 
-
 export const api = axios.create({
   baseURL: "https://p01--aicompetitordiscoverybackend--c5zwc6v5bd5l.code.run",
 });
@@ -20,11 +24,11 @@ const SearchInput = () => {
   const dispatch = useDispatch();
   const [urlLink, setUrlLink] = useState("");
   const isLoading = useSelector((state: RootState) => state.result.loading);
-console.log(urlLink)
+  console.log(urlLink);
+
   const test = async () => {
-    
     try {
-      dispatch(clearResult())
+      dispatch(clearResult());
       dispatch(setLoading());
       const res = await api.post("/api/pipeline", {
         url: urlLink,
@@ -33,11 +37,16 @@ console.log(urlLink)
       const data = res.data;
       console.log(data);
       if (!data.success) {
-        throw new Error(data.error || "Request failed");
+        dispatch(setError(data.error));
       }
       dispatch(setResult(data));
     } catch (err: any) {
-      dispatch(setError(err.message));
+      const errorMessage =
+        err?.response?.data?.error ||
+        err?.response?.data?.message ||
+        err.message ||
+        "Something went wrong";
+      dispatch(setError(errorMessage));
     }
   };
 

@@ -8,6 +8,7 @@ import { AiNetworkLoader } from "../compoents/AiNetworkLoader";
 export default function Home() {
   const isLoading = useSelector((state: RootState) => state.result.loading);
   const analysis = useSelector((state: RootState) => state.result.analysis);
+  const isError = useSelector((state: RootState) => state.result.error);
 
   return (
     <div className="flex items-center justify-center flex-col">
@@ -32,6 +33,7 @@ export default function Home() {
           </div>
         </>
       )}
+      {isError && <div className="text-red-500 text-xl font-medium mt-6">{isError}</div>}
     </div>
   );
 }

@@ -43,7 +43,10 @@ const Report = () => {
                 (item: Competitor, index: number) => (
                   <li key={index} className="mb-2 text-blue-400">
                     {item.name} —{" "}
-                    <span className=" promptText">{item.product_category}</span>
+                    <span className=" boldText">{item.product_category}
+                    </span>
+                   <p className=" promptText">{item.key_value_proposition}</p>
+                    <p className=" promptText">{item.business_model}</p>
                   </li>
                 ),
               )}
@@ -51,10 +54,11 @@ const Report = () => {
           </div>
         </div>
         <div className="flex-1 border border-devideBorder rounded-xl p-4 sm:p-6">
-          <h3>Market Overview</h3>
-          <p className="text-textResult leading-relaxed ">
-            {insight?.opportunity}
+          <h3> Overview</h3>
+          {/* <p className="text-textResult leading-relaxed ">
+            {insight.product_position}
           </p>
+          <p>{insight.primery_audience}</p> */}
         </div>
       </div>
     </div>

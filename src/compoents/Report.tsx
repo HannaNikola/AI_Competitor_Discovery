@@ -67,7 +67,6 @@ const Report = () => {
                 <p className="promptText">{insight?.core_mechanics}</p>
               </div>
 
-              
               <div className="py-3 border-y border-devideBorder">
                 <p className="font-semibold text-mainTitle mb-2">
                   Key Highlights & Features:
@@ -86,10 +85,7 @@ const Report = () => {
                     ))}
                 </div>
               </div>
-
-             
-             
-              <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-4">
                 <div>
                   <p className="font-semibold text-mainTitle mb-1">
                     Monetization:

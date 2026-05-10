@@ -11,10 +11,6 @@ import axios from "axios";
 import { useState } from "react";
 import { RootState } from "../store";
 
-// link for render
-// export const api = axios.create({
-//   baseURL: "https://ai-competitor-discovery-backend.onrender.com",
-// });
 
 export const api = axios.create({
   baseURL: "https://p01--aicompetitordiscoverybackend--c5zwc6v5bd5l.code.run",
